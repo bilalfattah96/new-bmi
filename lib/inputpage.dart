@@ -2,6 +2,8 @@
 
 import 'package:bmi/IconContent.dart';
 import 'package:bmi/ResultPage.dart';
+import 'package:bmi/button.dart';
+import 'package:bmi/calculate_brain.dart';
 import 'package:bmi/iconButton.dart';
 import 'package:bmi/resuseableCards.dart';
 import 'package:flutter/material.dart';
@@ -223,23 +225,10 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Resultpage(),));
-              },
-              child: Container(
-                child: Center(
-                    child: Text(
-                  'CALCULATE',
-                  style: BottomNavigationBarText,
-                ),),
-                color: BottomNavigationBarColor,
-                margin: EdgeInsets.only(top: 10),
-                padding: EdgeInsets.only(bottom: 10),
-                width: double.infinity,
-                height: BottomNavigationBarHeight,
-              ),
-            )
+            mybtn(text: 'Calculate BMI', ontap:  () {
+              CalculateBrain calc = CalculateBrain(height: height, weight: weight);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Resultpage(bmiresult: calc.CalculateBmi(),getResult: calc.getResult(),getInterpretation: calc.getInterpretation(),),));
+              },)
           ],
         ));
   }

@@ -1,10 +1,14 @@
+import 'package:bmi/button.dart';
 import 'package:flutter/material.dart';
 import 'constant.dart';
 import 'resuseableCards.dart';
 
 class Resultpage extends StatelessWidget {
-  const Resultpage({super.key});
+  const Resultpage({super.key,required this.bmiresult,required this.getResult,required this.getInterpretation});
 
+final String bmiresult;
+final String getResult;
+final String getInterpretation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +22,8 @@ class Resultpage extends StatelessWidget {
         children: [
           Expanded(
               child: Container(
+                // padding: EdgeInsets.all(15),
+                // alignment: Alignment.bottomLeft,
                   child: Text(
             'Your Result',
             style: tilteTextStyle,
@@ -27,14 +33,18 @@ class Resultpage extends StatelessWidget {
             child: mycontainer(
               color: activeCardColor,
               cardChild: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('Normal',style: resultTextStyle,),
-                  Text('18.3',style: TextStyle(fontSize: 100,color: Colors.white,fontWeight: FontWeight.bold),),
-                  Text('Your BMI is low, You should eat more',style: bodyTextStyle,textAlign: TextAlign.center,),
+                  Text(getResult,style: resultTextStyle,textAlign: TextAlign.center,),
+                  Text(bmiresult,style: bmiscore,textAlign: TextAlign.center,),
+                  Text(getInterpretation,style: bodyTextStyle,textAlign: TextAlign.center,),
                 ],
               ),
             ),
           ),
+          mybtn(text: 'Re Calculte BMI', ontap:  () {
+                Navigator.pop(context);
+              },)
         ],
       ),
     );

@@ -26,3 +26,5 @@ const tilteTextStyle = TextStyle(fontSize: 50,fontWeight: FontWeight.bold,color:
 const bodyTextStyle = TextStyle(fontSize: 22,color: Colors.white);
 
 const resultTextStyle = TextStyle(fontSize: 22,color: Color(0xff24d876),fontWeight: FontWeight.bold);
+
+const bmiscore = TextStyle(fontSize: 100,color: Colors.white,fontWeight: FontWeight.bold);
